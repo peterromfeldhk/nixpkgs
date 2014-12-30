@@ -240,8 +240,9 @@ in
       example = "/dev/sda3";
       description = ''
         Device for manual resume attempt during boot. This should be used primarily
-        if you want to resume from file. Specify here the device where the file
-        resides. You should also use <varname>boot.kernelParams</varname> to specify
+        if you want to resume from file. If left empty, the swap partitions are used.
+        Specify here the device where the file resides.
+        You should also use <varname>boot.kernelParams</varname> to specify
         <literal><replaceable>resume_offset</replaceable></literal>.
       '';
     };
@@ -325,7 +326,7 @@ in
 
     boot.initrd.compressor = mkOption {
       internal = true;
-      default = "gzip -9";
+      default = "gzip -9n";
       type = types.str;
       description = "The compressor to use on the initrd image.";
       example = "xz";
@@ -355,10 +356,17 @@ in
 
   config = mkIf (!config.boot.isContainer) {
 
-    assertions = singleton
+    assertions = [
       { assertion = any (fs: fs.mountPoint == "/") (attrValues config.fileSystems);
         message = "The ‘fileSystems’ option does not specify your root file system.";
-      };
+      }
+      { assertion = let inherit (config.boot) resumeDevice; in
+          resumeDevice == "" || builtins.substring 0 1 resumeDevice == "/";
+        message = "boot.resumeDevice has to be an absolute path."
+          + " Old \"x:y\" style is no longer supported.";
+      }
+    ];
+
 
     system.build.bootStage1 = bootStage1;
     system.build.initialRamdisk = initialRamdisk;

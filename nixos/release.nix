@@ -213,6 +213,12 @@ in rec {
     inherit system;
   });
 
+  # Provide container tarball for lxc, libvirt-lxc, docker-lxc, ...
+  containerTarball = forAllSystems (system: makeSystemTarball {
+    module = ./modules/virtualisation/lxc-container.nix;
+    inherit system;
+  });
+
   /*
   system_tarball_fuloong2f =
     assert builtins.currentSystem == "mips64-linux";
@@ -236,6 +242,7 @@ in rec {
   tests.avahi = callTest tests/avahi.nix {};
   tests.bittorrent = callTest tests/bittorrent.nix {};
   tests.blivet = callTest tests/blivet.nix {};
+  tests.cadvisor = scrubDrv (import tests/cadvisor.nix { system = "x86_64-linux"; });
   tests.chromium = callTest tests/chromium.nix {};
   tests.cjdns = callTest tests/cjdns.nix {};
   tests.containers = callTest tests/containers.nix {};
@@ -245,6 +252,7 @@ in rec {
   tests.firefox = callTest tests/firefox.nix {};
   tests.firewall = callTest tests/firewall.nix {};
   tests.fleet = scrubDrv (import tests/fleet.nix { system = "x86_64-linux"; });
+  tests.gitlab = callTest tests/gitlab.nix {};
   tests.gnome3 = callTest tests/gnome3.nix {};
   tests.installer.grub1 = forAllSystems (system: scrubDrv (import tests/installer.nix { inherit system; }).grub1.test);
   tests.installer.lvm = forAllSystems (system: scrubDrv (import tests/installer.nix { inherit system; }).lvm.test);
@@ -300,6 +308,7 @@ in rec {
   tests.simple = callTest tests/simple.nix {};
   tests.tomcat = callTest tests/tomcat.nix {};
   tests.udisks2 = callTest tests/udisks2.nix {};
+  tests.virtualbox = callTest tests/virtualbox.nix {};
   tests.xfce = callTest tests/xfce.nix {};
 
 

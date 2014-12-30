@@ -22,7 +22,7 @@ stdenv.mkDerivation rec {
   meta = with stdenv.lib; {
     description = "A free, open source, cross-platform video editor";
     longDescription = ''
-      An offical binary for Shotcut, which includes all the
+      An official binary for Shotcut, which includes all the
       dependencies pinned to specific versions, is provided on
       http://shotcut.org.
 
@@ -34,5 +34,9 @@ stdenv.mkDerivation rec {
     license = licenses.gpl3;
     maintainers = [ maintainers.goibhniu ];
     platforms = platforms.linux;
+
+    # after qt5 bump it probably needs to be updated,
+    # but newer versions seem to need newer than the latest stable mlt
+    broken = true;
   };
 }
