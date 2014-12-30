@@ -1,15 +1,16 @@
-{ stdenv, fetchurl, xz, vlc, automoc4, cmake, pkgconfig, phonon
-, qt4 ? null, qt5 ? null, withQt5 ? false }:
+{ stdenv, fetchurl, xz, vlc, cmake, pkgconfig, phonon_qt5, qt5 }:
 
 with stdenv.lib;
 
-assert (withQt5 -> qt5 != null); assert (!withQt5 -> qt4 != null);
-
 let
   pname = "phonon-backend-vlc";
-  v = "0.8.1";
+  v = "0.8.2";
   # Force same Qt version in phonon and VLC
-  vlc_ = vlc.override { inherit qt4 qt5 withQt5; };
+  vlc_ = vlc.override {
+    inherit qt5;
+    qt4 = null;
+    withQt5 = true;
+  };
   phonon_ = phonon.override { inherit qt4 qt5 withQt5; };
 in
 
@@ -18,14 +19,14 @@ stdenv.mkDerivation {
 
   src = fetchurl {
     url = "mirror://kde/stable/phonon/${pname}/${v}/${pname}-${v}.tar.xz";
-    sha256 = "1fyfh7qyb6rld350v2fgz452ld96d3z5ifchr323q0vc3hb9k222";
+    sha256 = "18ysdga681my75lxxv5h242pa4qappvg5z73wnc0ks9yypnzidys";
   };
 
-  nativeBuildInputs = [ cmake pkgconfig automoc4 xz ];
+  nativeBuildInputs = [ cmake pkgconfig xz ];
 
-  buildInputs = [ vlc_ phonon_ (if withQt5 then qt5 else qt4)];
+  buildInputs = [ vlc_ phonon_qt5 qt5];
 
-  cmakeFlags = optional withQt5 "-DPHONON_BUILD_PHONON4QT5=ON";
+  cmakeFlags = ["-DPHONON_BUILD_PHONON4QT5=ON"];
 
   meta = {
     homepage = http://phonon.kde.org/;
