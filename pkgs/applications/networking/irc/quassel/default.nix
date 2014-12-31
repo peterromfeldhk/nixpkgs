@@ -37,16 +37,12 @@ in with stdenv; mkDerivation rec {
     ++ lib.optional useQt5 libdbusmenu_qt5;
 
   cmakeFlags = [
-    "-DWITH_DBUS=OFF"
-    "-DWITH_LIBINDICATE=OFF"
     "-DEMBED_DATA=OFF"
-    "-DSTATIC=OFF"
-    "-DWITH_PHONON=ON" ]
+    "-DSTATIC=OFF" ]
     ++ edf monolithic "WANT_MONO"
     ++ edf daemon "WANT_CORE"
     ++ edf client "WANT_QTCLIENT"
     ++ edf withKDE "WITH_KDE"
-    ++ edf ssl "WITH_OPENSSL"
     ++ edf previews "WITH_WEBKIT"
     ++ edf useQt5 "USE_QT5";
 
