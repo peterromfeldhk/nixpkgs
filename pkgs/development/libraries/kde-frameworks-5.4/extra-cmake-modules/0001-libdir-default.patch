@@ -1,3 +1,12 @@
+From f1e22a65f94a231edfe01ac6a3fcf30d95b6329f Mon Sep 17 00:00:00 2001
+From: Thomas Tuegel <ttuegel@gmail.com>
+Date: Wed, 31 Dec 2014 07:16:45 -0600
+Subject: [PATCH 1/2] libdir default
+
+---
+ kde-modules/KDEInstallDirs.cmake | 31 +------------------------------
+ 1 file changed, 1 insertion(+), 30 deletions(-)
+
 diff --git a/kde-modules/KDEInstallDirs.cmake b/kde-modules/KDEInstallDirs.cmake
 index e255e87..a79a12a 100644
 --- a/kde-modules/KDEInstallDirs.cmake
@@ -41,3 +50,6 @@ index e255e87..a79a12a 100644
  
  # Macro for variables that are relative to another variable. We store an empty
  # value in the cache (for documentation/GUI cache editor purposes), and store
+-- 
+2.1.4
+
