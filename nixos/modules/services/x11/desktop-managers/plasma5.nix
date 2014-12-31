@@ -10,16 +10,24 @@ let
 
   phononBackends = {
     gstreamer = [
-      (pkgs.phonon_qt5_backend_gstreamer.override { inherit (plasma5) qt5; })
+      pkgs.phonon_backend_gstreamer
       pkgs.gst_all.gstPluginsBase
       pkgs.gst_all.gstPluginsGood
       pkgs.gst_all.gstPluginsUgly
       pkgs.gst_all.gstPluginsBad
       pkgs.gst_all.gstFfmpeg # for mp3 playback
-      pkgs.gst_all.gstreamer # needed?
+      pkgs.phonon_qt5_backend_gstreamer
+      pkgs.gst_all_1.gst-plugins-base
+      pkgs.gst_all_1.gst-plugins-good
+      pkgs.gst_all_1.gst-plugins-ugly
+      pkgs.gst_all_1.gst-plugins-bad
+      pkgs.gst_all_1.gst-libav # for mp3 playback
     ];
 
-    vlc = [(pkgs.phonon_qt5_backend_vlc.override { inherit (plasma5) qt5; })];
+    vlc = [
+      pkgs.phonon_qt5_backend_vlc
+      pkgs.phonon_backend_vlc
+    ];
   };
 
   phononBackendPackages = flip concatMap cfg.phononBackends
@@ -194,6 +202,11 @@ in
     environment.etc = singleton {
       source = "${pkgs.xkeyboard_config}/etc/X11/xkb";
       target = "X11/xkb";
+    };
+
+    environment.profileRelativeEnvVars = mkIf (lib.elem "gstreamer" cfg.phononBackends) {
+      GST_PLUGIN_SYSTEM_PATH = [ "/lib/gstreamer-0.10" ];
+      GST_PLUGIN_SYSTEM_PATH_1_0 = [ "/lib/gstreamer-1.0" ];
     };
 
     fonts.fonts = [ plasma5.oxygen-fonts ];
