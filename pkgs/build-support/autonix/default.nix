@@ -14,8 +14,6 @@ let
   generateSources =
     mapAttrs (n: pkg: fetchurl { inherit (pkg) sha256 name url; });
 
-  generateStores = mapAttrs (n: pkg: pkg.store);
-
   oneList = x: if builtins.isList x then x else [x];
 
   resolveInputs = collection: extra: names: inputs:
@@ -30,9 +28,6 @@ let
         else []
       ))
       inputs;
-
-  manifestXML = manifest:
-    writeText "manifest.xml" (builtins.toXML (generateStores manifest));
 
   breakRecursion = mapAttrs (name: mapAttrs (depType: filter (x: x != name)));
 
@@ -127,6 +122,10 @@ in
   inherit manifestWithNames generateSources resolveInputs manifestXML;
   inherit filterManifest mergeAttrsBy mergeAttrsByFuncDefaults;
   inherit mergeAttrsByFuncDefaultsClean callAutonixPackage;
+
+  writeManifestXML = callPackage ./write-manifest-xml.nix {
+    inherit manifestWithNames;
+  };
 
   emptyDeps = {
     buildInputs = [];
