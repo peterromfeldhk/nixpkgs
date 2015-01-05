@@ -3,12 +3,13 @@
 with stdenv.lib;
 
 let
-  go = name: mapAttrs (n: v: v // {
-    buildInputs = remove name v.buildInputs;
-    nativeBuildInputs = remove name v.nativeBuildInputs;
-    propagatedBuildInputs = remove name v.propagatedBuildInputs;
-    propagatedNativeBuildInputs = remove name v.propagatedNativeBuildInputs;
-    propagatedUserEnvPkgs = remove name v.propagatedUserEnvPkgs;
-    });
+  depAttrNames = [
+    "buildInputs" "nativeBuildInputs"
+    "propagatedBuildInputs" "propagatedNativeBuildInputs"
+    "propagatedUserEnvPkgs"
+  ];
+  isDepAttr = name: builtins.elem name depAttrNames;
+  go = dep:
+    mapAttrs (pkg: mapAttrs (n: if isDepAttr n then remove dep else id));
 in
   fold go
