@@ -9,7 +9,7 @@ let
 
   kf-package = callPackage ./kf-package { inherit debug; };
 
-  manifest = manifestWithNames (import ./manifest.nix { mirror = "mirror://kde"; });
+  manifest = importManifest ./manifest.nix { mirror = "mirror://kde"; };
 
   dependencies = import ./dependencies.nix {};
 
