@@ -6,8 +6,7 @@ with stdenv.lib; with autonix;
 let
 
   manifestOrig = importManifest ./manifest.nix { mirror = "mirror://kde"; };
-  manifestDropKWayland = filterAttrs (n: v: n != "kwayland");
-  manifest = manifestDropKWayland manifestOrig;
+  manifest = removePkgs manifestOrig [ "kwayland" ];
 
   depsOrig = import ./dependencies.nix {};
   depsFiltered = removeDeps depsOrig [

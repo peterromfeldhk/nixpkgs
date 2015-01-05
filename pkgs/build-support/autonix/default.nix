@@ -58,6 +58,8 @@ in
   };
 
   removeDeps = callPackage ./remove-deps.nix {};
+  removePkgs = manifest: names:
+    filterAttrs (n: v: !(builtins.elem n names)) manifest;
 
   emptyDeps = {
     buildInputs = [];
