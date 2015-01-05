@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, newScope, callAutonixPackage }:
+{ stdenv, fetchurl, newScope, callAutonixPackage, mkDerivation }:
 
 with stdenv.lib;
 
@@ -23,13 +23,13 @@ let
 in
 dir:
 
-{
+{ names
   # 'names' maps dependency strings to derivations. It is a set of the form:
   # {
   #   <dependency name> = <derivation>
   # }
   # '<derivation>' may also be a list of derivations.
-  names
+, manifest
   # 'manifest' lists the packages in the collection, their source and hash
   # information. It is a set of the form:
   # {
@@ -44,8 +44,8 @@ dir:
   # The package name is determined from the (sanitized) source name. A script
   # ./manifest.sh usually generates a file ./manifest.nix which can be imported
   # with 'importManifest' to produce this set.
-, manifest
-  # dependencies is a set of the form:
+, dependencies
+  # 'dependencies' is a set of the form:
   # {
   #   <package attr name> = {
   #     buildInputs = [ <list of strings> ];
@@ -59,22 +59,22 @@ dir:
   # Each list of strings will be translated into dependencies using the
   # names argument. Every list must be present for each package, even if
   # it is just the empty list.
-, dependencies
-  # extraInputs are attributes in the default scope (through callPackage) to
+, extraInputs ? {}
+  # 'extraInputs' are attributes in the default scope (through callPackage) to
   # the expressions in the collection. They are not included in the final
   # set.
-, extraInputs ? {}
-  # extraOutputs are extra attributes to include in the final set of the
+, extraOutputs ? {}
+  # 'extraOutputs' are extra attributes to include in the final set of the
   # collection. They are also used as extraInputs, so there is no need to
   # list packages twice.
-, extraOutputs ? {}
-  # deriver is a function of two arguments. The first argument is an
+, deriver ? mkDerivation
+  # 'deriver' is a function of two arguments. The first argument is an
   # attribute set of the form passed to stdenv.mkDerivation; these are the
   # default derivation attributes. The second argument is a list of attribute
   # sets which should be merged to produce additional arguments for the
   # derivation. The first arguments should override the merge arguments.
-, deriver ? mkDerivation
-  # overrides is a set of extra attributes passed to the deriver for each
+, overrides ? {}
+  # 'overrides' is a set of extra attributes passed to the deriver for each
   # package, i.e., it is a set of the form:
   # {
   #    <package name> = { <extra attributes> };
@@ -82,7 +82,6 @@ dir:
   # The extra attributes can be any extra attributes for the deriver, such
   # as buildInputs, cmakeFlags, etc. They will be merged with attributes from
   # other sources.
-, overrides ? {}
 }:
 let dependenciesOrig = dependencies;
     dev = {

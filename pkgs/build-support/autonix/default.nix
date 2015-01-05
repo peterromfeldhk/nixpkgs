@@ -52,6 +52,7 @@ in
   inherit mergeAttrsBy mergeAttrsByFuncDefaults mergeAttrsByFuncDefaultsClean;
   inherit callAutonixPackage;
   inherit importManifest;
+  inherit mkDerivation;
 
   writeManifestXML = callPackage ./write-manifest-xml.nix {
     inherit importManifest;
@@ -70,6 +71,6 @@ in
   };
 
   generateCollection = callPackage ./generate-collection.nix {
-    inherit callAutonixPackage;
+    inherit callAutonixPackage mkDerivation;
   };
 }
