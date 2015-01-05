@@ -57,7 +57,7 @@ in
     inherit importManifest;
   };
 
-  removeDependencies = callPackage ./remove-dependencies.nix {};
+  removeDeps = callPackage ./remove-deps.nix {};
 
   emptyDeps = {
     buildInputs = [];

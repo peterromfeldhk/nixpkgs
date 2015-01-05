@@ -9,11 +9,11 @@ let
   manifestDropKWayland = filterAttrs (n: v: n != "kwayland");
   manifest = manifestDropKWayland manifestOrig;
 
-  dependenciesOrig = import ./dependencies.nix {};
-  dependenciesFiltered = removeDependencies dependenciesOrig [
+  depsOrig = import ./dependencies.nix {};
+  depsFiltered = removeDeps depsOrig [
     "kwayland" "kf5" "kde4"
   ];
-  dependencies = dependenciesFiltered // {
+  dependencies = depsFiltered // {
     # Automatic dependencies for breeze interferes with building Qt4 and Qt5
     # styles separately. This won't be a problem if upstream ever supports
     # building both styles in the same source tree.
@@ -81,4 +81,4 @@ let
     deriver = kf5.dev.mkDerivation;
   };
 
-in assert builtins.isAttrs dependenciesOrig; plasma5
+in plasma5
