@@ -1,4 +1,4 @@
-{ autonix, haskellPackages, kde4, kf54, pkgs, qt4, stdenv
+{ autonix, haskellPackages, kde4, kf55, pkgs, qt4, stdenv
 , debug ? false }:
 
 with stdenv.lib; with autonix;
@@ -10,29 +10,23 @@ let
   manifest = manifestDropKWayland (manifestWithNames manifestOrig);
 
   dependenciesOrig = import ./dependencies.nix {};
-  dependenciesFilterKWayland = mapAttrs (n: v: v // {
-    buildInputs = remove "kwayland" v.buildInputs;
-    nativeBuildInputs = remove "kwayland" v.nativeBuildInputs;
-    propagatedBuildInputs = remove "kwayland" v.propagatedBuildInputs;
-    propagatedNativeBuildInputs =
-      remove "kwayland" v.propagatedNativeBuildInputs;
-    propagatedUserEnvPkgs =
-      remove "kwayland" v.propagatedUserEnvPkgs;
-  });
-  dependencies = (dependenciesFilterKWayland dependenciesOrig) // {
+  dependenciesFiltered = removeDependencies dependenciesOrig [
+    "kwayland" "kf5" "kde4"
+  ];
+  dependencies = dependenciesFiltered // {
     # Automatic dependencies for breeze interferes with building Qt4 and Qt5
     # styles separately. This won't be a problem if upstream ever supports
     # building both styles in the same source tree.
     breeze = emptyDeps;
   };
 
-  kf5 = kf54.override { inherit debug; };
+  kf5 = kf55.override { inherit debug; };
   inherit (kf5) qt5;
 
   extraInputs = kf5 // { inherit kde4; };
 
   extraOutputs = {
-    inherit kf5 qt5 qt4;
+    inherit kf5 qt5;
     poppler_qt5 = (pkgs.poppler.override { inherit qt5; }).poppler_qt5;
     breeze_qt4 = plasma5.dev.callAutonixPackage ./. "breeze" {
       withQt5 = false;
@@ -41,30 +35,24 @@ let
   };
 
   names = with pkgs; with extraOutputs; kf5.dev.names // {
-    dbusmenu-qt5 = libdbusmenu_qt5;
     inherit epoxy;
-    EPub = ebook_tools;
-    Exiv2 = exiv2;
-    FFmpeg = ffmpeg;
-    Fontconfig = fontconfig;
-    FONTFORGE_EXECUTABLE = fontforge;
-    Freetype = freetype;
-    GIO = glib;
-    GLIB2 = glib;
-    IBus = ibus;
-    MobileBroadbandProviderInfo = mobile_broadband_provider_info;
-    ModemManager = modemmanager;
-    NetworkManager = networkmanager;
-    OpenConnect = openconnect;
-    PCIUTILS = pciutils;
-    PopplerQt5 = poppler_qt5;
-    Prison = kf5.prison;
-    PulseAudio = pulseaudio;
-    RAW1394 = libraw1394;
-    Sensors = lm_sensors;
-    Taglib = taglib;
-    USB = libusb;
-    Xapian = xapian;
+    epub = ebook_tools;
+    inherit exiv2 ffmpeg fontconfig;
+    fontforge_executable = fontforge;
+    inherit freetype;
+    gio = glib;
+    glib2 = glib;
+    inherit ibus;
+    mobilebroadbandproviderinfo = mobile_broadband_provider_info;
+    inherit modemmanager networkmanager openconnect pciutils;
+    popplerqt5 = poppler_qt5;
+    inherit (kf5) prison;
+    inherit pulseaudio;
+    raw1394 = libraw1394;
+    sensors = lm_sensors;
+    inherit taglib;
+    usb = libusb;
+    inherit xapian;
   };
 
   overrides = {
@@ -93,4 +81,4 @@ let
     deriver = kf5.dev.mkDerivation;
   };
 
-in plasma5
+in assert builtins.isAttrs dependenciesOrig; plasma5

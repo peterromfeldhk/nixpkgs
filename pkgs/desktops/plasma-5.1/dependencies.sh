@@ -1,6 +1,6 @@
 #!/bin/sh
 
-manifestXML=$(nix-build ../../.. -A plasma51.dev.manifest)
+manifestXML=$(nix-build -E 'with (import ../../.. {}); autonix.writeManifestXML ./manifest.nix')
 
 autonixDepsKf5=""
 if [[ -z $1 ]]; then
@@ -10,4 +10,4 @@ else
 fi
 
 exec ${autonixDepsKF5}/kf5-deps "${manifestXML}" \
-    --renames ../../development/libraries/kde-frameworks-5.4/renames.txt
+    --renames ../../development/libraries/kde-frameworks-5.5/renames.txt

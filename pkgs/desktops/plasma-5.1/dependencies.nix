@@ -2,15 +2,15 @@
 { }:
 {
   baloo = {
-    buildInputs = [ "KF5" "KF5Abc" "KF5Akonadi" "KF5AkonadiMime" "KF5AkonadiServer" "KF5CalendarCore" "KF5Mime" "KF5PimUtils" "Qt5" "Qt5Test" "Xapian" "kauth" "kcmutils" "kconfig" "kcrash" "kdelibs4support" "kfilemetadata" "kidletime" "kio" "solid" ];
+    buildInputs = [ "kauth" "kcmutils" "kconfig" "kcrash" "kdelibs4support" "kf5" "kf5abc" "kf5akonadi" "kf5akonadimime" "kf5akonadiserver" "kf5calendarcore" "kf5mime" "kf5pimutils" "kfilemetadata" "kidletime" "kio" "qt5" "qt5test" "solid" "xapian" ];
     nativeBuildInputs = [ "cmake" "ki18n" ];
-    propagatedBuildInputs = [ "Qt5Core" "Xapian" "kcoreaddons" "kfilemetadata" ];
+    propagatedBuildInputs = [ "kcoreaddons" "kfilemetadata" "qt5core" "xapian" ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
     propagatedUserEnvPkgs = [  ];
   };
 
   breeze = {
-    buildInputs = [ "KDE4" "KF5" "PkgConfig" "Qt5" "XCB" "frameworkintegration" "kcompletion" "kconfig" "kconfigwidgets" "kcoreaddons" "kwin" "kwindowsystem" ];
+    buildInputs = [ "frameworkintegration" "kcompletion" "kconfig" "kconfigwidgets" "kcoreaddons" "kde4" "kf5" "kwin" "kwindowsystem" "pkgconfig" "qt5" "xcb" ];
     nativeBuildInputs = [ "cmake" "ki18n" ];
     propagatedBuildInputs = [  ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
@@ -18,7 +18,7 @@
   };
 
   kde-cli-tools = {
-    buildInputs = [ "KF5" "Qt5" "Qt5Test" "Qt5X11Extras" "X11" "kcmutils" "kconfig" "kdelibs4support" "kdesu" "kiconthemes" "kwindowsystem" ];
+    buildInputs = [ "kcmutils" "kconfig" "kdelibs4support" "kdesu" "kf5" "kiconthemes" "kwindowsystem" "qt5" "qt5test" "qt5x11extras" "x11" ];
     nativeBuildInputs = [ "cmake" "ki18n" ];
     propagatedBuildInputs = [  ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
@@ -26,23 +26,23 @@
   };
 
   kdeplasma-addons = {
-    buildInputs = [ "GIO" "GLIB2" "GObject" "IBus" "KDE4" "KF5" "KdepimLibs" "Kexiv2" "Lancelot" "Lancelot-Datamodels" "Qt5" "SCIM" "SharedMimeInfo" "kcmutils" "kconfig" "kconfigwidgets" "kcoreaddons" "kdelibs4support" "kio" "krunner" "kservice" "kunitconversion" "plasma-framework" ];
+    buildInputs = [ "gio" "glib2" "gobject" "ibus" "kcmutils" "kconfig" "kconfigwidgets" "kcoreaddons" "kde4" "kdelibs4support" "kdepimlibs" "kexiv2" "kf5" "kio" "krunner" "kservice" "kunitconversion" "lancelot" "lancelot-datamodels" "plasma-framework" "qt5" "scim" "sharedmimeinfo" ];
     nativeBuildInputs = [ "cmake" "ki18n" ];
     propagatedBuildInputs = [  ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
-    propagatedUserEnvPkgs = [ "SharedMimeInfo" ];
+    propagatedUserEnvPkgs = [  ];
   };
 
   kfilemetadata = {
-    buildInputs = [ "EPub" "Exiv2" "FFmpeg" "KF5" "PopplerQt5" "QMobipocket" "Qt5" "Taglib" "karchive" ];
+    buildInputs = [ "epub" "exiv2" "ffmpeg" "karchive" "kf5" "popplerqt5" "qmobipocket" "qt5" "taglib" ];
     nativeBuildInputs = [ "cmake" "ki18n" ];
-    propagatedBuildInputs = [ "Qt5Core" ];
+    propagatedBuildInputs = [ "qt5core" ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
     propagatedUserEnvPkgs = [  ];
   };
 
   khelpcenter = {
-    buildInputs = [ "KF5" "Qt5" "kcmutils" "kconfig" "kdelibs4support" "khtml" "kinit" ];
+    buildInputs = [ "kcmutils" "kconfig" "kdelibs4support" "kf5" "khtml" "kinit" "qt5" ];
     nativeBuildInputs = [ "cmake" "ki18n" ];
     propagatedBuildInputs = [  ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
@@ -50,7 +50,7 @@
   };
 
   khotkeys = {
-    buildInputs = [ "KF5" "Qt5" "X11" "kcmutils" "kdbusaddons" "kdelibs4support" "kglobalaccel" "kio" "kxmlgui" "plasma-framework" "plasma-workspace" ];
+    buildInputs = [ "kcmutils" "kdbusaddons" "kdelibs4support" "kf5" "kglobalaccel" "kio" "kxmlgui" "plasma-framework" "plasma-workspace" "qt5" "x11" ];
     nativeBuildInputs = [ "cmake" "ki18n" ];
     propagatedBuildInputs = [  ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
@@ -58,7 +58,7 @@
   };
 
   kinfocenter = {
-    buildInputs = [ "EGL" "KF5" "OpenGL" "OpenGLES" "PCIUTILS" "Qt5" "RAW1394" "X11" "kcmutils" "kcompletion" "kconfig" "kconfigwidgets" "kcoreaddons" "kdbusaddons" "kdelibs4support" "kiconthemes" "kio" "kservice" "kwayland" "kwidgetsaddons" "kxmlgui" "solid" ];
+    buildInputs = [ "egl" "kcmutils" "kcompletion" "kconfig" "kconfigwidgets" "kcoreaddons" "kdbusaddons" "kdelibs4support" "kf5" "kiconthemes" "kio" "kservice" "kwayland" "kwidgetsaddons" "kxmlgui" "opengl" "opengles" "pciutils" "qt5" "raw1394" "solid" "x11" ];
     nativeBuildInputs = [ "cmake" "kdoctools" "ki18n" ];
     propagatedBuildInputs = [  ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
@@ -66,15 +66,15 @@
   };
 
   kio-extras = {
-    buildInputs = [ "Exiv2" "JPEG" "KF5" "LibSSH" "OpenEXR" "Phonon4Qt5" "Qt5" "Qt5Test" "SLP" "Samba" "SharedMimeInfo" "karchive" "kconfig" "kconfigwidgets" "kcoreaddons" "kdbusaddons" "kdelibs4support" "kdnssd" "khtml" "kiconthemes" "kio" "solid" ];
-    nativeBuildInputs = [ "MD5SUM_EXECUTABLE" "cmake" "kdoctools" "ki18n" ];
+    buildInputs = [ "exiv2" "jpeg" "karchive" "kconfig" "kconfigwidgets" "kcoreaddons" "kdbusaddons" "kdelibs4support" "kdnssd" "kf5" "khtml" "kiconthemes" "kio" "libssh" "openexr" "phonon4qt5" "qt5" "qt5test" "samba" "sharedmimeinfo" "slp" "solid" ];
+    nativeBuildInputs = [ "cmake" "kdoctools" "ki18n" "md5sum_executable" ];
     propagatedBuildInputs = [  ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
-    propagatedUserEnvPkgs = [ "SharedMimeInfo" ];
+    propagatedUserEnvPkgs = [  ];
   };
 
   kmenuedit = {
-    buildInputs = [ "KF5" "Qt5" "kdbusaddons" "kdelibs4support" "khotkeys" "kiconthemes" "kio" "kxmlgui" "sonnet" ];
+    buildInputs = [ "kdbusaddons" "kdelibs4support" "kf5" "khotkeys" "kiconthemes" "kio" "kxmlgui" "qt5" "sonnet" ];
     nativeBuildInputs = [ "cmake" "ki18n" ];
     propagatedBuildInputs = [  ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
@@ -82,7 +82,7 @@
   };
 
   ksysguard = {
-    buildInputs = [ "KF5" "Qt5" "Sensors" "kconfig" "kcoreaddons" "kdelibs4support" "kiconthemes" "kitemviews" "knewstuff" "libksysguard" ];
+    buildInputs = [ "kconfig" "kcoreaddons" "kdelibs4support" "kf5" "kiconthemes" "kitemviews" "knewstuff" "libksysguard" "qt5" "sensors" ];
     nativeBuildInputs = [ "cmake" "ki18n" ];
     propagatedBuildInputs = [  ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
@@ -90,15 +90,15 @@
   };
 
   kwayland = {
-    buildInputs = [ "Qt5" "Wayland" ];
-    nativeBuildInputs = [ "WAYLAND_SCANNER_EXECUTABLE" "cmake" ];
-    propagatedBuildInputs = [ "Qt5Gui" ];
+    buildInputs = [ "qt5" "wayland" ];
+    nativeBuildInputs = [ "cmake" "wayland_scanner_executable" ];
+    propagatedBuildInputs = [ "qt5gui" ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
     propagatedUserEnvPkgs = [  ];
   };
 
   kwin = {
-    buildInputs = [ "EGL" "KF5" "OpenGL" "OpenGLES" "Qt5" "Qt5Multimedia" "Qt5Test" "Wayland" "X11" "XCB" "XKB" "epoxy" "kactivities" "kcmutils" "kcompletion" "kconfig" "kconfigwidgets" "kcoreaddons" "kcrash" "kdeclarative" "kglobalaccel" "kinit" "kio" "knewstuff" "knotifications" "kservice" "kwayland" "kwidgetsaddons" "kwindowsystem" "kxmlgui" "plasma-framework" ];
+    buildInputs = [ "egl" "epoxy" "kactivities" "kcmutils" "kcompletion" "kconfig" "kconfigwidgets" "kcoreaddons" "kcrash" "kdeclarative" "kf5" "kglobalaccel" "kinit" "kio" "knewstuff" "knotifications" "kservice" "kwayland" "kwidgetsaddons" "kwindowsystem" "kxmlgui" "opengl" "opengles" "plasma-framework" "qt5" "qt5multimedia" "qt5test" "wayland" "x11" "xcb" "xkb" ];
     nativeBuildInputs = [ "cmake" "kdoctools" "ki18n" ];
     propagatedBuildInputs = [ "kconfig" "kservice" "kwindowsystem" ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
@@ -106,7 +106,7 @@
   };
 
   kwrited = {
-    buildInputs = [ "KF5" "Qt5" "kdbusaddons" "kdelibs4support" "kpty" ];
+    buildInputs = [ "kdbusaddons" "kdelibs4support" "kf5" "kpty" "qt5" ];
     nativeBuildInputs = [ "cmake" ];
     propagatedBuildInputs = [  ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
@@ -114,39 +114,39 @@
   };
 
   libkscreen = {
-    buildInputs = [ "Doxygen" "Qt5" "X11" "XCB" ];
+    buildInputs = [ "doxygen" "qt5" "x11" "xcb" ];
     nativeBuildInputs = [ "cmake" ];
-    propagatedBuildInputs = [ "Qt5Core" ];
+    propagatedBuildInputs = [ "qt5core" ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
     propagatedUserEnvPkgs = [  ];
   };
 
   libksysguard = {
-    buildInputs = [ "KF5" "Qt5" "Qt5X11Extras" "X11" "ZLIB" "kconfig" "kdelibs4support" "plasma-framework" ];
+    buildInputs = [ "kconfig" "kdelibs4support" "kf5" "plasma-framework" "qt5" "qt5x11extras" "x11" "zlib" ];
     nativeBuildInputs = [ "cmake" "ki18n" ];
-    propagatedBuildInputs = [ "Qt5DBus" ];
+    propagatedBuildInputs = [ "qt5dbus" ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
     propagatedUserEnvPkgs = [  ];
   };
 
   libmm-qt = {
-    buildInputs = [ "ModemManager" "Qt4" "Qt5" "libmm-qt" ];
+    buildInputs = [ "libmm-qt" "modemmanager" "qt4" "qt5" ];
     nativeBuildInputs = [ "cmake" ];
-    propagatedBuildInputs = [ "Qt5Core" ];
+    propagatedBuildInputs = [ "qt5core" ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
     propagatedUserEnvPkgs = [  ];
   };
 
   libnm-qt = {
-    buildInputs = [ "NetworkManager" "Qt4" "Qt5" "libnm-qt" ];
+    buildInputs = [ "libnm-qt" "networkmanager" "qt4" "qt5" ];
     nativeBuildInputs = [ "cmake" ];
-    propagatedBuildInputs = [ "Qt5Core" ];
+    propagatedBuildInputs = [ "qt5core" ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
     propagatedUserEnvPkgs = [  ];
   };
 
   milou = {
-    buildInputs = [ "KF5" "KdepimLibs" "Qt5" "kdeclarative" "krunner" "plasma-framework" ];
+    buildInputs = [ "kdeclarative" "kdepimlibs" "kf5" "krunner" "plasma-framework" "qt5" ];
     nativeBuildInputs = [ "cmake" "ki18n" ];
     propagatedBuildInputs = [  ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
@@ -154,7 +154,7 @@
   };
 
   oxygen = {
-    buildInputs = [ "KDE4" "KDE4Workspace" "KF5" "Qt5" "XCB" "frameworkintegration" "kcompletion" "kconfig" "kguiaddons" "kservice" "kwidgetsaddons" "kwin" "kwindowsystem" ];
+    buildInputs = [ "frameworkintegration" "kcompletion" "kconfig" "kde4" "kde4workspace" "kf5" "kguiaddons" "kservice" "kwidgetsaddons" "kwin" "kwindowsystem" "pkgconfig" "qt5" "xcb" ];
     nativeBuildInputs = [ "cmake" "ki18n" ];
     propagatedBuildInputs = [  ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
@@ -163,14 +163,14 @@
 
   oxygen-fonts = {
     buildInputs = [  ];
-    nativeBuildInputs = [ "FONTFORGE_EXECUTABLE" "cmake" ];
+    nativeBuildInputs = [ "cmake" "fontforge_executable" ];
     propagatedBuildInputs = [  ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
     propagatedUserEnvPkgs = [  ];
   };
 
   plasma-desktop = {
-    buildInputs = [ "Fontconfig" "Freetype" "GLIB2" "KDE4" "KF5" "OpenGL" "OpenGLES" "PackageKitQt5" "Phonon4Qt5" "PulseAudio" "Qt4" "Qt5" "Strigi" "USB" "X11" "XCB" "attica" "kactivities" "kauth" "kcmutils" "kdelibs4support" "kemoticons" "kitemmodels" "knewstuff" "knotifyconfig" "krunner" "kwallet" "kwin" "plasma-framework" "plasma-workspace" ];
+    buildInputs = [ "attica" "fontconfig" "freetype" "glib2" "kactivities" "kauth" "kcmutils" "kde4" "kdelibs4support" "kemoticons" "kf5" "kitemmodels" "knewstuff" "knotifyconfig" "krunner" "kwallet" "kwin" "opengl" "opengles" "packagekitqt5" "phonon4qt5" "plasma-framework" "plasma-workspace" "pulseaudio" "qt4" "qt5" "strigi" "usb" "x11" "xcb" ];
     nativeBuildInputs = [ "cmake" "kdoctools" "ki18n" ];
     propagatedBuildInputs = [  ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
@@ -178,7 +178,7 @@
   };
 
   plasma-nm = {
-    buildInputs = [ "KF5" "MobileBroadbandProviderInfo" "ModemManager" "NetworkManager" "OpenConnect" "OpenSSL" "Qt5" "kcompletion" "kconfigwidgets" "kcoreaddons" "kdbusaddons" "kdeclarative" "kdelibs4support" "kiconthemes" "kinit" "kio" "kitemviews" "knotifications" "kservice" "kwallet" "kwidgetsaddons" "kwindowsystem" "kxmlgui" "libmm-qt" "libnm-qt" "plasma-framework" "solid" ];
+    buildInputs = [ "kcompletion" "kconfigwidgets" "kcoreaddons" "kdbusaddons" "kdeclarative" "kdelibs4support" "kf5" "kiconthemes" "kinit" "kio" "kitemviews" "knotifications" "kservice" "kwallet" "kwidgetsaddons" "kwindowsystem" "kxmlgui" "libmm-qt" "libnm-qt" "mobilebroadbandproviderinfo" "modemmanager" "networkmanager" "openconnect" "openssl" "plasma-framework" "qt5" "solid" ];
     nativeBuildInputs = [ "cmake" "ki18n" ];
     propagatedBuildInputs = [  ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
@@ -186,7 +186,7 @@
   };
 
   plasma-workspace = {
-    buildInputs = [ "KF5" "KF5NO_MODULE" "Phonon4Qt5" "Prison" "Qalculate" "Qt5" "Qt5DBus" "Qt5Qml" "Qt5Quick" "Qt5Script" "Qt5Test" "X11" "XCB" "ZLIB" "baloo" "dbusmenu-qt5" "kactivities" "kcmutils" "kconfig" "kcoreaddons" "kcrash" "kdbusaddons" "kdeclarative" "kdelibs4support" "kdesu" "kdewebkit" "kidletime" "kio" "kjsembed" "knewstuff" "knotifyconfig" "krunner" "ktexteditor" "ktextwidgets" "kwallet" "kwin" "libgps" "libkscreen" "libksysguard" "plasma-framework" "solid" ];
+    buildInputs = [ "baloo" "dbusmenu-qt5" "kactivities" "kcmutils" "kconfig" "kcoreaddons" "kcrash" "kdbusaddons" "kdeclarative" "kdelibs4support" "kdesu" "kdewebkit" "kf5" "kf5no_module" "kidletime" "kio" "kjsembed" "knewstuff" "knotifyconfig" "krunner" "ktexteditor" "ktextwidgets" "kwallet" "kwin" "libgps" "libkscreen" "libksysguard" "phonon4qt5" "plasma-framework" "prison" "qalculate" "qt5" "qt5dbus" "qt5qml" "qt5quick" "qt5script" "qt5test" "solid" "x11" "xcb" "zlib" ];
     nativeBuildInputs = [ "cmake" "kdoctools" "ki18n" ];
     propagatedBuildInputs = [ "kio" "libksysguard" ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
@@ -202,7 +202,7 @@
   };
 
   powerdevil = {
-    buildInputs = [ "KF5" "Qt5" "UDev" "X11" "XCB" "kauth" "kconfig" "kdelibs4support" "kglobalaccel" "kidletime" "kio" "knotifyconfig" "plasma-workspace" "solid" ];
+    buildInputs = [ "kauth" "kconfig" "kdelibs4support" "kf5" "kglobalaccel" "kidletime" "kio" "knotifyconfig" "plasma-workspace" "qt5" "solid" "udev" "x11" "xcb" ];
     nativeBuildInputs = [ "cmake" "ki18n" ];
     propagatedBuildInputs = [  ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
@@ -210,7 +210,7 @@
   };
 
   systemsettings = {
-    buildInputs = [ "KF5" "Qt5" "kcmutils" "kconfig" "kdbusaddons" "kdelibs4support" "khtml" "kiconthemes" "kio" "kitemviews" "kservice" "kwindowsystem" "kxmlgui" ];
+    buildInputs = [ "kcmutils" "kconfig" "kdbusaddons" "kdelibs4support" "kf5" "khtml" "kiconthemes" "kio" "kitemviews" "kservice" "kwindowsystem" "kxmlgui" "qt5" ];
     nativeBuildInputs = [ "cmake" "ki18n" ];
     propagatedBuildInputs = [  ];
     propagatedNativeBuildInputs = [ "extra-cmake-modules" ];
