@@ -9,9 +9,7 @@ let
 
   kf-package = callPackage ./kf-package { inherit debug; };
 
-  manifest = importManifest ./manifest.nix { mirror = "mirror://kde"; };
-
-  dependencies = import ./dependencies.nix {};
+  packages = importPackages ./. { mirror = "mirror://kde"; };
 
   extraInputs = {
     inherit kf-package;
@@ -70,7 +68,7 @@ let
   };
 
   kf5 = autonix.generateCollection ./. {
-    inherit manifest dependencies extraInputs extraOutputs names overrides;
+    inherit packages extraInputs extraOutputs names overrides;
     deriver = kf-package;
   };
 in kf5

@@ -1,13 +1,8 @@
-{ stdenv, fetchurl, newScope, callAutonixPackage, mkDerivation }:
+{ stdenv, newScope, callAutonixPackage, mkDerivation, isDepAttr }:
 
 with stdenv.lib;
 
 let
-  # Do not allow any package to depend on itself.
-  breakRecursion = mapAttrs (name: mapAttrs (depType: filter (x: x != name)));
-
-  generateSources =
-    mapAttrs (n: pkg: fetchurl { inherit (pkg) sha256 name url; });
 
   oneList = x: if builtins.isList x then x else [x];
 
@@ -29,25 +24,12 @@ dir:
   #   <dependency name> = <derivation>
   # }
   # '<derivation>' may also be a list of derivations.
-, manifest
-  # 'manifest' lists the packages in the collection, their source and hash
-  # information. It is a set of the form:
+, packages
   # {
   #   <package name> = {
-  #     url = <src url>;
-  #     sha256 = <hash>;
-  #     name = <basename of src>;
-  #     store = <store path of downloaded src>;
-  #   };
-  #   ...
-  # }
-  # The package name is determined from the (sanitized) source name. A script
-  # ./manifest.sh usually generates a file ./manifest.nix which can be imported
-  # with 'importManifest' to produce this set.
-, dependencies
-  # 'dependencies' is a set of the form:
-  # {
-  #   <package attr name> = {
+  #     name = <package name and version>;
+  #     src = <src via fetchurl or similar>;
+  #
   #     buildInputs = [ <list of strings> ];
   #     nativeBuildInputs = [ <list of strings> ];
   #     propagatedBuildInputs = [ <list of strings> ];
@@ -56,9 +38,6 @@ dir:
   #   };
   #   ...
   # }
-  # Each list of strings will be translated into dependencies using the
-  # names argument. Every list must be present for each package, even if
-  # it is just the empty list.
 , extraInputs ? {}
   # 'extraInputs' are attributes in the default scope (through callPackage) to
   # the expressions in the collection. They are not included in the final
@@ -83,31 +62,38 @@ dir:
   # as buildInputs, cmakeFlags, etc. They will be merged with attributes from
   # other sources.
 }:
-let dependenciesOrig = dependencies;
-    dev = {
-      inherit names;
-      manifest = manifestXML manifest;
-    };
+let dev = { inherit names; };
 in
-let extraIn = extraOutputs // extraInputs // {
+let
+  extraIn = extraOutputs // extraInputs // {
+    inherit callPackage;
+    mkDerivation = deriver;
+    dev = dev // { inherit callPackage; };
+  };
+  extraOut = extraOutputs // {
+    dev = dev // {
       inherit callPackage;
       mkDerivation = deriver;
-      dev = dev // { inherit callPackage; };
+      callAutonixPackage = callAutonixPackage callAutonixAttrs;
     };
-    extraOut = extraOutputs // {
-      dev = dev // {
-        inherit callPackage;
-        mkDerivation = deriver;
-        callAutonixPackage = callAutonixPackage callAutonixAttrs;
-      };
-    };
-    callPackage = newScope (collection // extraIn);
-    callAutonixAttrs = {
-      inherit manifest overrides callPackage deriver;
-      dependencies = breakRecursion dependenciesOrig;
-      srcs = generateSources manifest;
-      resolve = resolveInputs collection extraIn names;
-    };
-    collection =
-      mapAttrs (n: p: callAutonixPackage callAutonixAttrs dir n {}) manifest;
-in collection // extraOut
+  };
+
+  resolveAllInputs =
+    let scope = collection // extraIn // names;
+        resolveInputs = concatMap (dep: oneList (scope."${dep}" or []));
+    in mapAttrs (n: if isDepAttr n then resolveInputs else id);
+
+  packagesWithInputs = mapAttrs (pkg: resolveAllInputs) packages;
+
+  callPackage = newScope (collection // extraIn);
+
+  callAutonixAttrs = {
+    inherit callPackage deriver overrides;
+    packages = packagesWithInputs;
+  };
+
+  collection =
+    let callPkg = n: p: callAutonixPackage callAutonixAttrs dir n {};
+    in mapAttrs callPkg packagesWithInputs;
+in
+  collection // extraOut

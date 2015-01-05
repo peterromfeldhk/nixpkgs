@@ -46,6 +46,14 @@ let
 
   callAutonixPackage = callPackage ./call-autonix-package.nix {};
 
+  depAttrNames = [
+    "buildInputs" "nativeBuildInputs"
+    "propagatedBuildInputs" "propagatedNativeBuildInputs"
+    "propagatedUserEnvPkgs"
+  ];
+
+  isDepAttr = name: builtins.elem name depAttrNames;
+
 in
 {
   inherit pkgNameVersion pkgAttrName;
@@ -53,14 +61,18 @@ in
   inherit callAutonixPackage;
   inherit importManifest;
   inherit mkDerivation;
+  inherit depAttrNames isDepAttr;
 
   writeManifestXML = callPackage ./write-manifest-xml.nix {
     inherit importManifest;
   };
 
-  removeDeps = callPackage ./remove-deps.nix {};
-  removePkgs = manifest: names:
-    filterAttrs (n: v: !(builtins.elem n names)) manifest;
+  removeDeps = callPackage ./remove-deps.nix { inherit isDepAttr; };
+  removePkgs = names: filterAttrs (n: v: !(builtins.elem n names));
+
+  importPackages = callPackage ./import-packages.nix {
+    inherit importManifest isDepAttr;
+  };
 
   emptyDeps = {
     buildInputs = [];
@@ -71,6 +83,6 @@ in
   };
 
   generateCollection = callPackage ./generate-collection.nix {
-    inherit callAutonixPackage mkDerivation;
+    inherit callAutonixPackage mkDerivation isDepAttr;
   };
 }

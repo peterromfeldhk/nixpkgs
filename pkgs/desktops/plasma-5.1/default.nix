@@ -5,19 +5,16 @@ with stdenv.lib; with autonix;
 
 let
 
-  manifestOrig = importManifest ./manifest.nix { mirror = "mirror://kde"; };
-  manifest = removePkgs manifestOrig [ "kwayland" ];
-
-  depsOrig = import ./dependencies.nix {};
-  depsFiltered = removeDeps depsOrig [
-    "kwayland" "kf5" "kde4"
-  ];
-  dependencies = depsFiltered // {
-    # Automatic dependencies for breeze interferes with building Qt4 and Qt5
-    # styles separately. This won't be a problem if upstream ever supports
-    # building both styles in the same source tree.
-    breeze = emptyDeps;
-  };
+  packagesOrig = importPackages ./. { mirror = "mirror://kde"; };
+  packages =
+    fold (f: x: f x)
+      (importPackages ./. { mirror = "mirror://kde"; })
+      [ (removePkgs [ "kwayland" ])
+        (removeDeps [ "kwayland" "kf5" "kde4" ])
+        # Automatic dependencies for breeze inferere with building Qt4 and Qt5
+        # styles separately.
+        (deps: deps // { breeze = deps.breeze // emptyDeps; })
+      ];
 
   kf5 = kf55.override { inherit debug; };
   inherit (kf5) qt5;
@@ -76,7 +73,7 @@ let
   };
 
   plasma5 = autonix.generateCollection ./. {
-    inherit dependencies extraInputs extraOutputs manifest names overrides;
+    inherit packages extraInputs extraOutputs names overrides;
     deriver = kf5.dev.mkDerivation;
   };
 
