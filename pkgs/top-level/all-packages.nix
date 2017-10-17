@@ -2051,6 +2051,8 @@ with pkgs;
 
   fastlane = callPackage ../tools/admin/fastlane { };
 
+  fastlane-plugin-match = callPackage ../tools/admin/fastlane/plugins/match { };
+
   fatresize = callPackage ../tools/filesystems/fatresize {};
 
   fdk_aac = callPackage ../development/libraries/fdk-aac { };
