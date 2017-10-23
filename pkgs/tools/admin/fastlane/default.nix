@@ -1,9 +1,11 @@
-{ lib, bundlerEnv, ruby }:
+{ lib, bundlerEnv, ruby, gcc }:
 
 bundlerEnv rec {
   inherit ruby;
   pname = "fastlane";
   gemdir = ./.;
+
+  buildInputs = [ gcc ];
 
   meta = with lib; {
     description     = "A tool to automate building and releasing iOS and Android apps";

@@ -137,10 +137,10 @@
     dependencies = ["CFPropertyList" "addressable" "babosa" "colored" "commander-fastlane" "dotenv" "excon" "faraday" "faraday-cookie_jar" "faraday_middleware" "fastimage" "gh_inspector" "google-api-client" "highline" "json" "mini_magick" "multi_json" "multi_xml" "multipart-post" "plist" "public_suffix" "rubyzip" "security" "slack-notifier" "terminal-notifier" "terminal-table" "tty-screen" "word_wrap" "xcodeproj" "xcpretty" "xcpretty-travis-formatter"];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "0n73748vw7y29ycx0rjdg9zvn8xhncq07zq1l4a16n5s82rb14iy";
+      sha256 = "16n6sqsm6k3x2z65np09aqqs9yilm02yf6wkrv1am3mzs0jnssin";
       type = "gem";
     };
-    version = "2.61.0";
+    version = "2.62.0";
   };
   gh_inspector = {
     source = {
@@ -163,10 +163,10 @@
     dependencies = ["faraday" "jwt" "logging" "memoist" "multi_json" "os" "signet"];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "1xpmvrzhczak25nm0k3r9aa083lmfnzi94mir3g1xyrgzz66vxli";
+      sha256 = "02sf4ybwiymw8zplrwwagisywsla45jj3bink9ad3hlyynwx94wg";
       type = "gem";
     };
-    version = "0.5.3";
+    version = "0.6.0";
   };
   highline = {
     source = {
@@ -204,10 +204,10 @@
   jwt = {
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "124zz1142bi2if7hl5pcrcamwchv4icyr5kaal9m2q6wqbdl6aw4";
+      sha256 = "1w0kaqrbl71cq9sbnixc20x5lqah3hs2i93xmhlfdg2y3by7yzky";
       type = "gem";
     };
-    version = "1.5.6";
+    version = "2.1.0";
   };
   little-plugger = {
     source = {
