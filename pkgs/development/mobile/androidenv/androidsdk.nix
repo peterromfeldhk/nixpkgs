@@ -12,7 +12,7 @@ let inherit (stdenv.lib) makeLibraryPath; in
 
 stdenv.mkDerivation rec {
   name = "android-sdk-${version}";
-  version = "25.2.5";
+  version = "26.0.1";
 
   src = if (stdenv.system == "i686-linux" || stdenv.system == "x86_64-linux")
     then fetchurl {

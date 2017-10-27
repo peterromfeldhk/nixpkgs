@@ -4,23 +4,14 @@
 }:
 
 stdenv.mkDerivation rec {
-  name = "android-ndk-r10e";
+  name = "android-ndk-r15c";
 
-  src = if stdenv.system == "i686-linux"
-    then fetchurl {
-      url = "http://dl.google.com/android/ndk/${name}-linux-x86.bin";
-      sha256 = "1xbxra5v3bm6cmxyx8yyya5r93jh5m064aibgwd396xdm8jpvc4j";
-    }
-    else if stdenv.system == "x86_64-linux" then fetchurl {
-      url = "http://dl.google.com/android/ndk/${name}-linux-x86_64.bin";
+  src = if stdenv.system == "x86_64-linux" then fetchurl {
+      url = "http://dl.google.com/android/ndk/${name}-linux-x86_64.zip";
       sha256 = "0nhxixd0mq4ib176ya0hclnlbmhm8f2lab6i611kiwbzyqinfb8h";
     }
-    else if stdenv.system == "i686-darwin" then fetchurl {
-      url = "http://dl.google.com/android/ndk/${name}-darwin-x86.bin";
-      sha256 = "0kh8bmfcwq7lf6xiwlacwx7wf2mqg7ax7jaq28gi0qvgc2g3133j";
-    }
     else if stdenv.system == "x86_64-darwin" then fetchurl {
-      url = "http://dl.google.com/android/ndk/${name}-darwin-x86_64.bin";
+      url = "http://dl.google.com/android/ndk/${name}-darwin-x86_64.zip";
       sha256 = "0kh8bmfcwq7lf6xiwlacwx7wf2mqg7ax7jaq28gi0qvgc2g3133j";
     }
     else throw "platform ${stdenv.system} not supported!";
