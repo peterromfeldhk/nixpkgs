@@ -12,8 +12,22 @@ let inherit (stdenv.lib) makeLibraryPath; in
 
 stdenv.mkDerivation rec {
   name = "android-sdk-${version}";
-  version = "26.0.1";
+  /*version = "26.0.1";
+  build_QM = "3859397";
 
+  src = if stdenv.system == "x86_64-linux"
+    then fetchurl {
+      url = "https://dl.google.com/android/repository/sdk-tools-linux-${build_QM}.zip";
+      sha256 = "185yq7qwxflw24ccm5d6zziwlc9pxmsm3f54pm9p7xm0ik724kj4";
+    }
+    else if stdenv.system == "x86_64-darwin" then fetchurl {
+      url = "https://dl.google.com/android/repository/sdk-tools-darwin-${build_QM}.zip";
+      sha256 = "1ycx9gzdaqaw6n19yvxjawywacavn1jc6sadlz5qikhgfr57b0aa";
+    }
+    else throw "platform not ${stdenv.system} supported!";*/
+
+  version = "25.2.5";
+  
   src = if (stdenv.system == "i686-linux" || stdenv.system == "x86_64-linux")
     then fetchurl {
       url = "http://dl.google.com/android/repository/tools_r${version}-linux.zip";
