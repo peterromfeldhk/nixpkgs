@@ -26,6 +26,6 @@ stdenv.mkDerivation rec {
     description = "Cryptographic store accessible through a PKCS #11 interface";
     license = licenses.bsd2;
     maintainers = [ maintainers.leenaars ];
-    platforms = platforms.linux;
+    platforms = platforms.unix;
   };
 }
