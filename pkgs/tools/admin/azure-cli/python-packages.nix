@@ -417,15 +417,15 @@ let
         };
       });
 
-      # azure-keyvault-keys = super.azure-keyvault-keys.overridePythonAttrs(oldAttrs: rec {
-      #   version = "4.5.0b4";
-      #   src = super.fetchPypi {
-      #     inherit (oldAttrs) pname;
-      #     inherit version;
-      #     extension = "zip";
-      #     sha256 = "sha256-f43ZTMFc0IVIaa69gEZFOLALREcx3RRCFoYDY2FYLrY=";
-      #   };
-      # });
+      azure-keyvault-keys = super.azure-keyvault-keys.overridePythonAttrs(oldAttrs: rec {
+        version = "4.5.0b6";
+        src = super.fetchPypi {
+          inherit (oldAttrs) pname;
+          inherit version;
+          extension = "zip";
+          sha256 = "1xym47jqcz1srlbzcm3mxswkbzxx92332s3cpjkyblwsm0jr2m2q";
+        };
+      });
 
 
       # part of azure.mgmt.datalake namespace
