@@ -398,11 +398,11 @@ let
           sha256 = "0jfxm8lx8dzs3v2b04ljizk8gfckbm5l2v86rm7k0npbfvryba1p";
         };
 
-        propagatedBuildInputs = with self; [
-          azure-common azure-nspkg
-          # azure-keyvault-certificates azure-keyvault-secrets azure-keyvault-keys
-          msrest msrestazure cryptography
-        ];
+        # propagatedBuildInputs = with self; [
+        #   azure-common azure-nspkg
+        #   # azure-keyvault-certificates azure-keyvault-secrets azure-keyvault-keys
+        #   msrest msrestazure cryptography
+        # ];
         pythonNamespaces = [ "azure" ];
         pythonImportsCheck = [ ];
       });
