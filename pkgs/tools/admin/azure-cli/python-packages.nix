@@ -117,11 +117,11 @@ let
         '';
       };
 
-      azure-batch = overrideAzureMgmtPackage super.azure-batch "12.0.0" "zip"
-        lib.fakeSha256;
+      # azure-batch = overrideAzureMgmtPackage super.azure-batch "12.0.0" "zip"
+      #   lib.fakeSha256;
 
-      azure-mgmt-apimanagement = overrideAzureMgmtPackage super.azure-mgmt-apimanagement "3.0.0" "zip"
-        lib.fakeSha256;
+      # azure-mgmt-apimanagement = overrideAzureMgmtPackage super.azure-mgmt-apimanagement "3.0.0" "zip"
+      #   lib.fakeSha256;
 
       azure-mgmt-batch = overrideAzureMgmtPackage super.azure-mgmt-batch "16.0.0" "zip"
         "1b3cecd6f16813879c6ac1a1bb01f9a6f2752cd1f9157eb04d5e41e4a89f3c34";
@@ -389,23 +389,23 @@ let
         };
       });
 
-      azure-keyvault = super.azure-keyvault.overrideAttrs(oldAttrs: rec {
-        version = "1.1.0";
-        src = super.fetchPypi {
-          inherit (oldAttrs) pname;
-          inherit version;
-          extension = "zip";
-          sha256 = "0jfxm8lx8dzs3v2b04ljizk8gfckbm5l2v86rm7k0npbfvryba1p";
-        };
+      # azure-keyvault = super.azure-keyvault.overrideAttrs(oldAttrs: rec {
+      #   version = "1.1.0";
+      #   src = super.fetchPypi {
+      #     inherit (oldAttrs) pname;
+      #     inherit version;
+      #     extension = "zip";
+      #     sha256 = "0jfxm8lx8dzs3v2b04ljizk8gfckbm5l2v86rm7k0npbfvryba1p";
+      #   };
 
-        # propagatedBuildInputs = with self; [
-        #   azure-common azure-nspkg
-        #   # azure-keyvault-certificates azure-keyvault-secrets azure-keyvault-keys
-        #   msrest msrestazure cryptography
-        # ];
-        # pythonNamespaces = [ "azure" ];
-        pythonImportsCheck = [ ];
-      });
+      #   # propagatedBuildInputs = with self; [
+      #   #   azure-common azure-nspkg
+      #   #   # azure-keyvault-certificates azure-keyvault-secrets azure-keyvault-keys
+      #   #   msrest msrestazure cryptography
+      #   # ];
+      #   # pythonNamespaces = [ "azure" ];
+      #   pythonImportsCheck = [ ];
+      # });
 
       azure-keyvault-administration = super.azure-keyvault-administration.overridePythonAttrs(oldAttrs: rec {
         version = "4.0.0b3";
@@ -417,15 +417,15 @@ let
         };
       });
 
-      azure-keyvault-keys = super.azure-keyvault-keys.overridePythonAttrs(oldAttrs: rec {
-        version = "4.5.0b6";
-        src = super.fetchPypi {
-          inherit (oldAttrs) pname;
-          inherit version;
-          extension = "zip";
-          sha256 = "1xym47jqcz1srlbzcm3mxswkbzxx92332s3cpjkyblwsm0jr2m2q";
-        };
-      });
+      # azure-keyvault-keys = super.azure-keyvault-keys.overridePythonAttrs(oldAttrs: rec {
+      #   version = "4.5.0b6";
+      #   src = super.fetchPypi {
+      #     inherit (oldAttrs) pname;
+      #     inherit version;
+      #     extension = "zip";
+      #     sha256 = "1xym47jqcz1srlbzcm3mxswkbzxx92332s3cpjkyblwsm0jr2m2q";
+      #   };
+      # });
 
 
       # part of azure.mgmt.datalake namespace
