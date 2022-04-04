@@ -120,8 +120,8 @@ let
       azure-batch = overrideAzureMgmtPackage super.azure-batch "11.0.0" "zip"
         "sha256-zl/bDsli7d/oXNgiBekXfLC720RSZXRuOLO7vx8W3HM=";
 
-      azure-mgmt-apimanagement = overrideAzureMgmtPackage super.azure-mgmt-apimanagement "0.2.0" "zip"
-        "0whx3s8ri9939r3pdvjf8iqcslas1xy6cnccidmp10r5ng0023vr";
+      azure-mgmt-apimanagement = overrideAzureMgmtPackage super.azure-mgmt-apimanagement "3.0.0" "zip"
+        lib.fakeSha256;
 
       azure-mgmt-batch = overrideAzureMgmtPackage super.azure-mgmt-batch "16.0.0" "zip"
         "1b3cecd6f16813879c6ac1a1bb01f9a6f2752cd1f9157eb04d5e41e4a89f3c34";
