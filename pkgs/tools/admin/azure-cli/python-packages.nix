@@ -399,7 +399,7 @@ let
         };
 
         propagatedBuildInputs = with self; [
-          azure-common azure-nspkg
+          azure-common
           super.azure-keyvault-certificates super.azure-keyvault-secrets azure-keyvault-keys
           msrest msrestazure cryptography
         ];
