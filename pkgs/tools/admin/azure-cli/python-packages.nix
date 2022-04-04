@@ -401,7 +401,7 @@ let
         propagatedBuildInputs = with self; [
           azure-common azure-batch msrest msrestazure cryptography
         ];
-        pythonNamespaces = [ ];
+        pythonNamespaces = [ "azure" "azure.keyvault" ];
         pythonImportsCheck = [ ];
       });
 
