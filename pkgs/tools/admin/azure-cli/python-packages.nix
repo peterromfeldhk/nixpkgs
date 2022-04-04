@@ -403,7 +403,7 @@ let
         #   # azure-keyvault-certificates azure-keyvault-secrets azure-keyvault-keys
         #   msrest msrestazure cryptography
         # ];
-        pythonNamespaces = [ "azure" ];
+        # pythonNamespaces = [ "azure" ];
         pythonImportsCheck = [ ];
       });
 
