@@ -398,24 +398,11 @@ let
           sha256 = "0jfxm8lx8dzs3v2b04ljizk8gfckbm5l2v86rm7k0npbfvryba1p";
         };
 
-        preBuild = ''
-          rm -f azure_bdist_wheel.py
-          substituteInPlace setup.cfg \
-            --replace "azure-namespace-package = azure-mgmt-nspkg" ""
-        '';
-
         propagatedBuildInputs = with self; [
-          # azure-common
-          azure-nspkg
-          super.azure-keyvault-certificates super.azure-keyvault-secrets azure-keyvault-keys
-          # msrest msrestazure cryptography
+          azure-common azure-nspkg msrest msrestazure cryptography
         ];
-        # pythonNamespaces = [ "azure.keyvault" ];
-        pythonImportsCheck = [
-          "azure.keyvault"
-          "azure.keyvault.keys"
-          "azure.keyvault.secrets"
-        ];
+        pythonNamespaces = [ "azure" ];
+        pythonImportsCheck = [ ];
       });
 
       azure-keyvault-administration = super.azure-keyvault-administration.overridePythonAttrs(oldAttrs: rec {
