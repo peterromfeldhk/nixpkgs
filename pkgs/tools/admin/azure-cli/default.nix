@@ -27,12 +27,10 @@ py.pkgs.toPythonApplication (py.pkgs.buildAzureCliPackage {
     substituteInPlace setup.py \
       --replace "chardet~=3.0.4" "chardet" \
       --replace "javaproperties~=0.5.1" "javaproperties" \
-      --replace "pytz==2019.1" "pytz" \
       --replace "scp~=0.13.2" "scp" \
       --replace "PyNaCl~=1.4.0" "PyNaCl" \
-      --replace "jsondiff~=1.2.0" "jsondiff~=1.2" \
+      --replace "jsondiff~=1.3.0" "jsondiff~=1.3" \
       --replace "antlr4-python3-runtime~=4.7.2" "antlr4-python3-runtime~=4.7" \
-      --replace "mock~=4.0" "mock"
       --replace "azure-keyvault~=1.1.0" "azure-keyvault"
 
     # remove namespace hacks
