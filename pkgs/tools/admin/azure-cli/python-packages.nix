@@ -186,8 +186,8 @@ let
       azure-mgmt-iothub = overrideAzureMgmtPackage super.azure-mgmt-iothub "2.2.0" "zip"
         lib.fakeSha256;
 
-      azure-mgmt-iothubprovisioningservices = overrideAzureMgmtPackage super.azure-mgmt-iothubprovisioningservices "1.0.0" "zip"
-        "e5871b03488b5ae6dfc441cdbda40cb39c000635ee57c513053792b3c15826a9";
+      azure-mgmt-iothubprovisioningservices = overrideAzureMgmtPackage super.azure-mgmt-iothubprovisioningservices "1.1.0" "zip"
+        lib.fakeSha256;
 
       azure-mgmt-iotcentral = overrideAzureMgmtPackage super.azure-mgmt-iotcentral "9.0.0" "zip"
         "64df73df449a6f3717f3d0963e5869224ed3e6216c79de571493bea7c1b52cb6";
