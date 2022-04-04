@@ -409,7 +409,7 @@ let
           super.azure-keyvault-certificates super.azure-keyvault-secrets azure-keyvault-keys
           # msrest msrestazure cryptography
         ];
-        pythonNamespaces = [ "azure.keyvault" ];
+        # pythonNamespaces = [ "azure.keyvault" ];
         pythonImportsCheck = [
           "azure.keyvault"
           "azure.keyvault.keys"
