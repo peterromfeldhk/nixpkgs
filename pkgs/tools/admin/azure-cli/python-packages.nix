@@ -386,23 +386,23 @@ let
         };
       });
 
-      # azure-keyvault = super.azure-keyvault.overrideAttrs(oldAttrs: rec {
-      #   version = "4.2.0";
-      #   src = super.fetchPypi {
-      #     inherit (oldAttrs) pname;
-      #     inherit version;
-      #     extension = "zip";
-      #     sha256 = "0jfxm8lx8dzs3v2b04ljizk8gfckbm5l2v86rm7k0npbfvryxa1p";
-      #   };
+      azure-keyvault = super.azure-keyvault.overrideAttrs(oldAttrs: rec {
+        version = "1.1.0";
+        src = super.fetchPypi {
+          inherit (oldAttrs) pname;
+          inherit version;
+          extension = "zip";
+          sha256 = "0jfxm8lx8dzs3v2b04ljizk8gfckbm5l2v86rm7k0npbfvryba1p";
+        };
 
-      #   # propagatedBuildInputs = with self; [
-      #   #   azure-common azure-nspkg
-      #   #   azure-keyvault-certificates azure-keyvault-secrets azure-keyvault-keys
-      #   #   msrest msrestazure cryptography
-      #   # ];
-      #   # pythonNamespaces = [ "azure" ];
-      #   # pythonImportsCheck = [ ];
-      # });
+        propagatedBuildInputs = with self; [
+          azure-common azure-nspkg
+          # azure-keyvault-certificates azure-keyvault-secrets azure-keyvault-keys
+          msrest msrestazure cryptography
+        ];
+        pythonNamespaces = [ "azure" ];
+        pythonImportsCheck = [ ];
+      });
 
       # azure-keyvault-administration = super.azure-keyvault-administration.overridePythonAttrs(oldAttrs: rec {
       #   version = "4.0.0b3";
