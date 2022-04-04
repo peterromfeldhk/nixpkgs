@@ -9,7 +9,7 @@ let
     owner = "Azure";
     repo = "azure-cli";
     rev = "azure-cli-${version}";
-    sha256 = "sha256-PXY32bfuK0bQGI0N+XHs9lakF6K7+WjrHMvuNgDsSJM=";
+    sha256 = "0hxv61qg2bmbdk0vyv7j5cy75k68nl9bigvjid52hkflzp2k0h84";
   };
 
   # put packages that needs to be overriden in the py package scope
