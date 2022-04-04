@@ -33,6 +33,7 @@ py.pkgs.toPythonApplication (py.pkgs.buildAzureCliPackage {
       --replace "jsondiff~=1.2.0" "jsondiff~=1.2" \
       --replace "antlr4-python3-runtime~=4.7.2" "antlr4-python3-runtime~=4.7" \
       --replace "mock~=4.0" "mock"
+      --replace "azure-keyvault~=1.1.0" "azure-keyvault"
 
     # remove namespace hacks
     # remove urllib3 because it was added as 'urllib3[secure]', which doesn't get handled well
