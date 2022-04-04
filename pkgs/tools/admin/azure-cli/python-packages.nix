@@ -400,10 +400,11 @@ let
 
         propagatedBuildInputs = with self; [
           azure-common msrest msrestazure cryptography
-          # azure-nspkg azure-keyvault-nspkg
+          # azure-nspkg
+          # azure-keyvault-nspkg
         ];
-        pythonNamespaces = [ "azure" "azure.keyvault" ];
-        pythonImportsCheck = [ "azure.keyvault" ];
+        pythonNamespaces = [ ];
+        pythonImportsCheck = [ ];
       });
 
       azure-keyvault-administration = super.azure-keyvault-administration.overridePythonAttrs(oldAttrs: rec {
