@@ -402,8 +402,8 @@ let
           azure-common msrest msrestazure cryptography
           # azure-nspkg azure-keyvault-nspkg
         ];
-        pythonNamespaces = [ "azure" ];
-        pythonImportsCheck = [ ];
+        pythonNamespaces = [ "azure" "azure.keyvault" ];
+        pythonImportsCheck = [ "azure.keyvault" ];
       });
 
       azure-keyvault-administration = super.azure-keyvault-administration.overridePythonAttrs(oldAttrs: rec {
