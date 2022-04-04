@@ -184,7 +184,7 @@ let
         "634e398de9a23e712aa27a4a59f9ea5d5091d1dfcfed5ac977230918872c4430";
 
       azure-mgmt-iothub = overrideAzureMgmtPackage super.azure-mgmt-iothub "2.2.0" "zip"
-        "2724f48cadb1be7ee96fc26c7bfa178f82cea5d325e785e91d9f26965fa8e36f";
+        lib.fakeSha256;
 
       azure-mgmt-iothubprovisioningservices = overrideAzureMgmtPackage super.azure-mgmt-iothubprovisioningservices "1.0.0" "zip"
         "e5871b03488b5ae6dfc441cdbda40cb39c000635ee57c513053792b3c15826a9";
@@ -198,8 +198,8 @@ let
       azure-mgmt-devtestlabs = overrideAzureMgmtPackage super.azure-mgmt-devtestlabs "4.0.0" "zip"
         "1397ksrd61jv7400mgn8sqngp6ahir55fyq9n5k69wk88169qm2r";
 
-      azure-mgmt-netapp = overrideAzureMgmtPackage super.azure-mgmt-netapp "5.1.0" "zip"
-        "sha256-MGCICI7hDobEzyTMgqnKYZ21zfwNo/ogfQDsf3fwbo4=";
+      azure-mgmt-netapp = overrideAzureMgmtPackage super.azure-mgmt-netapp "6.0.1" "zip"
+        "1qc8ngf6x9i3lr33vljgziyqn2q633qpl2v2fy6qsqz1gdc87rkc";
 
       azure-mgmt-dns = overrideAzureMgmtPackage super.azure-mgmt-dns "8.0.0" "zip"
         "407c2dacb33513ffbe9ca4be5addb5e9d4bae0cb7efa613c3f7d531ef7bf8de8";
