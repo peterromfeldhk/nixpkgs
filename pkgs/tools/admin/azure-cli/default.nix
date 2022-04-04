@@ -53,7 +53,6 @@ py.pkgs.toPythonApplication (py.pkgs.buildAzureCliPackage {
     azure-graphrbac
     azure-identity
     azure-keyvault
-    azure-keyvault-nspkg
     azure-keyvault-administration
     azure-keyvault-keys
     azure-loganalytics
