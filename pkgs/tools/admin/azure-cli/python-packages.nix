@@ -386,6 +386,45 @@ let
         };
       });
 
+      # azure-keyvault = super.azure-keyvault.overrideAttrs(oldAttrs: rec {
+      #   version = "4.2.0";
+      #   src = super.fetchPypi {
+      #     inherit (oldAttrs) pname;
+      #     inherit version;
+      #     extension = "zip";
+      #     sha256 = "0jfxm8lx8dzs3v2b04ljizk8gfckbm5l2v86rm7k0npbfvryxa1p";
+      #   };
+
+      #   # propagatedBuildInputs = with self; [
+      #   #   azure-common azure-nspkg
+      #   #   azure-keyvault-certificates azure-keyvault-secrets azure-keyvault-keys
+      #   #   msrest msrestazure cryptography
+      #   # ];
+      #   # pythonNamespaces = [ "azure" ];
+      #   # pythonImportsCheck = [ ];
+      # });
+
+      # azure-keyvault-administration = super.azure-keyvault-administration.overridePythonAttrs(oldAttrs: rec {
+      #   version = "4.0.0b3";
+      #   src = super.fetchPypi {
+      #     inherit (oldAttrs) pname;
+      #     inherit version;
+      #     extension = "zip";
+      #     sha256 = "sha256-d3tJWObM3plRurzfqWmHkn5CqVL9ekQfn9AeDc/KxLQ=";
+      #   };
+      # });
+
+      azure-keyvault-keys = super.azure-keyvault-keys.overridePythonAttrs(oldAttrs: rec {
+        version = "4.5.0b4";
+        src = super.fetchPypi {
+          inherit (oldAttrs) pname;
+          inherit version;
+          extension = "zip";
+          sha256 = "sha256-f43ZTMFc0IVIaa69gEZFOLALREcx3RRCFoYDY2FYLrY=";
+        };
+      });
+
+
       # part of azure.mgmt.datalake namespace
       azure-mgmt-datalake-analytics = super.azure-mgmt-datalake-analytics.overrideAttrs(oldAttrs: rec {
         version = "0.2.1";
