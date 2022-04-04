@@ -400,8 +400,8 @@ let
 
         propagatedBuildInputs = with self; [
           azure-common msrest msrestazure cryptography
-          azure-nspkg
-          azure-keyvault-nspkg
+          super.azure-nspkg
+          super.azure-keyvault-nspkg
         ];
         pythonNamespaces = [ ];
         pythonImportsCheck = [ ];
