@@ -404,15 +404,15 @@ let
         pythonImportsCheck = [ ];
       });
 
-      # azure-keyvault-administration = super.azure-keyvault-administration.overridePythonAttrs(oldAttrs: rec {
-      #   version = "4.0.0b3";
-      #   src = super.fetchPypi {
-      #     inherit (oldAttrs) pname;
-      #     inherit version;
-      #     extension = "zip";
-      #     sha256 = "sha256-d3tJWObM3plRurzfqWmHkn5CqVL9ekQfn9AeDc/KxLQ=";
-      #   };
-      # });
+      azure-keyvault-administration = super.azure-keyvault-administration.overridePythonAttrs(oldAttrs: rec {
+        version = "4.0.0b3";
+        src = super.fetchPypi {
+          inherit (oldAttrs) pname;
+          inherit version;
+          extension = "zip";
+          sha256 = "sha256-d3tJWObM3plRurzfqWmHkn5CqVL9ekQfn9AeDc/KxLQ=";
+        };
+      });
 
       # azure-keyvault-keys = super.azure-keyvault-keys.overridePythonAttrs(oldAttrs: rec {
       #   version = "4.5.0b4";
