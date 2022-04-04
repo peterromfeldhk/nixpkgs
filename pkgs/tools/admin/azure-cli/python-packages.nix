@@ -231,8 +231,8 @@ let
       azure-mgmt-privatedns = overrideAzureMgmtPackage super.azure-mgmt-privatedns "1.0.0" "zip"
         "b60f16e43f7b291582c5f57bae1b083096d8303e9d9958e2c29227a55cc27c45";
 
-      azure-mgmt-web = overrideAzureMgmtPackage super.azure-mgmt-web "4.0.0" "zip"
-        "sha256-5XQ3qTPn3qmwYY/nkODa3GP5hXc1NhrItfXoBiucKg0=";
+      azure-mgmt-web = overrideAzureMgmtPackage super.azure-mgmt-web "6.1.0" "zip"
+        lib.fakeSha256;
 
       azure-mgmt-redhatopenshift = overrideAzureMgmtPackage super.azure-mgmt-redhatopenshift "1.0.0" "zip"
         "94cd41f1ebd82e40620fd3e6d88f666b5c19ac7cf8b4e8edadb9721bd7c80980";
