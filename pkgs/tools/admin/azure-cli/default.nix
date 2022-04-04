@@ -198,6 +198,7 @@ py.pkgs.toPythonApplication (py.pkgs.buildAzureCliPackage {
     "azure_functions_devops_build"
     "azure.graphrbac"
     "azure.keyvault"
+    "azure.keyvault.keys"
     "azure.loganalytics"
     "azure.mgmt.advisor"
     "azure.mgmt.apimanagement"
@@ -271,4 +272,3 @@ py.pkgs.toPythonApplication (py.pkgs.buildAzureCliPackage {
     maintainers = with maintainers; [ jonringer ];
   };
 })
-
