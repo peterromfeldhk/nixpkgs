@@ -183,8 +183,8 @@ let
       azure-mgmt-imagebuilder = overrideAzureMgmtPackage super.azure-mgmt-imagebuilder "1.0.0" "zip"
         "634e398de9a23e712aa27a4a59f9ea5d5091d1dfcfed5ac977230918872c4430";
 
-      azure-mgmt-iothub = overrideAzureMgmtPackage super.azure-mgmt-iothub "2.1.0" "zip"
-        "2724f48cadb1be7ee96fc26c7bfa178f82cea5d325e785e91d9f26965fa8e46f";
+      azure-mgmt-iothub = overrideAzureMgmtPackage super.azure-mgmt-iothub "2.2.0" "zip"
+        "2724f48cadb1be7ee96fc26c7bfa178f82cea5d325e785e91d9f26965fa8e36f";
 
       azure-mgmt-iothubprovisioningservices = overrideAzureMgmtPackage super.azure-mgmt-iothubprovisioningservices "1.0.0" "zip"
         "e5871b03488b5ae6dfc441cdbda40cb39c000635ee57c513053792b3c15826a9";
