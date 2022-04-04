@@ -204,8 +204,8 @@ let
       azure-mgmt-dns = overrideAzureMgmtPackage super.azure-mgmt-dns "8.0.0" "zip"
         "407c2dacb33513ffbe9ca4be5addb5e9d4bae0cb7efa613c3f7d531ef7bf8de8";
 
-      azure-mgmt-loganalytics = overrideAzureMgmtPackage super.azure-mgmt-loganalytics "12.0.0" "zip"
-        "da128a7e0291be7fa2063848df92a9180cf5c16d42adc09d2bc2efd711536bfb";
+      azure-mgmt-loganalytics = overrideAzureMgmtPackage super.azure-mgmt-loganalytics "13.0.0b2" "zip"
+        "0ycf9djsjkxrfa9589qyqwv1nh8kg8zhhzijngwrzvc5j5cv5h4g";
 
       azure-mgmt-network = overrideAzureMgmtPackage super.azure-mgmt-network "19.3.0" "zip"
         "0b6a1ccdffd76e057ab16a6c319740a0ca68d59fedf7e9c02f2437396e72aa11";
