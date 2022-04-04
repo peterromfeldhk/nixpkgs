@@ -165,8 +165,8 @@ let
       azure-mgmt-containerinstance = overrideAzureMgmtPackage super.azure-mgmt-containerinstance "9.1.0" "zip"
         "sha256-N+zUTEnOyn18lDHlkUj+vRXX/sJhZR7XLd1YdV50ULA=";
 
-      azure-mgmt-containerservice = overrideAzureMgmtPackage super.azure-mgmt-containerservice "16.1.0" "zip"
-        "sha256-NlTIrOK4ho0OqcTHjHT1HobiMzDH2KY20TIlN0fm8/Q=";
+      azure-mgmt-containerservice = overrideAzureMgmtPackage super.azure-mgmt-containerservice "17.0.0" "zip"
+        "0zv017ly246kbcwqa3n85sfpbfjg44vvl4zqhf1b0sgjk9sxcim1";
 
       azure-mgmt-cosmosdb = overrideAzureMgmtPackage super.azure-mgmt-cosmosdb "7.0.0b2" "zip"
         "sha256-hVvYW9gkfTVMwis3IdD0JXYDxdKcyyzIFx3hNk7VMLI=";
