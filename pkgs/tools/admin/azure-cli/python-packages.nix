@@ -398,11 +398,11 @@ let
           sha256 = "0jfxm8lx8dzs3v2b04ljizk8gfckbm5l2v86rm7k0npbfvryba1p";
         };
 
-        preBuild = ''
-          rm -f azure_bdist_wheel.py
-          substituteInPlace setup.cfg \
-            --replace "azure-namespace-package = azure-mgmt-nspkg" ""
-        '';
+        # preBuild = ''
+        #   rm -f azure_bdist_wheel.py
+        #   substituteInPlace setup.cfg \
+        #     --replace "azure-namespace-package = azure-mgmt-nspkg" ""
+        # '';
 
         propagatedBuildInputs = with self; [
           # azure-common azure-nspkg
