@@ -291,8 +291,8 @@ let
       azure-mgmt-authorization = overrideAzureMgmtPackage super.azure-mgmt-authorization "0.61.0" "zip"
         "0xfvx2dvfj3fbz4ngn860ipi4v6gxqajyjc8x92r8knhmniyxk7m";
 
-      azure-mgmt-storage = overrideAzureMgmtPackage super.azure-mgmt-storage "19.0.0" "zip"
-        "f05963e5a8696d0fd4dcadda4feecb9b382a380d2e461b3647704ac787d79876";
+      azure-mgmt-storage = overrideAzureMgmtPackage super.azure-mgmt-storage "19.1.0" "zip"
+        lib.fakeSha256;
 
       azure-mgmt-servicebus = overrideAzureMgmtPackage super.azure-mgmt-servicebus "7.1.0" "zip"
         lib.fakeSha256;
