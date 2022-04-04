@@ -294,8 +294,8 @@ let
       azure-mgmt-storage = overrideAzureMgmtPackage super.azure-mgmt-storage "19.0.0" "zip"
         "f05963e5a8696d0fd4dcadda4feecb9b382a380d2e461b3647704ac787d79876";
 
-      azure-mgmt-servicebus = overrideAzureMgmtPackage super.azure-mgmt-servicebus "6.0.0" "zip"
-        "f6c64ed97d22d0c03c4ca5fc7594bd0f3d4147659c10110160009b93f541298e";
+      azure-mgmt-servicebus = overrideAzureMgmtPackage super.azure-mgmt-servicebus "7.1.0" "zip"
+        lib.fakeSha256;
 
       azure-mgmt-servicefabric = overrideAzureMgmtPackage super.azure-mgmt-servicefabric "1.0.0" "zip"
         "de35e117912832c1a9e93109a8d24cab94f55703a9087b2eb1c5b0655b3b1913";
