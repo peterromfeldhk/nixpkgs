@@ -261,6 +261,9 @@ let
       azure-mgmt-synapse = overrideAzureMgmtPackage super.azure-mgmt-synapse "2.1.0b2" "zip"
         "sha256-/BAxKDttp/tS/X45y8X4KBm5qxtNuVXhrc5qB3A+wRE=";
 
+      azure-mgmt-trafficmanager = overrideAzureMgmtPackage super.azure-mgmt-trafficmanager "1.0.0" "zip"
+        "1a4nnp98w17yq92y45fh0kw67059iqv73wmk9kflwv1lh0g7cha7";
+
       azure-mgmt-datamigration = overrideAzureMgmtPackage super.azure-mgmt-datamigration "10.0.0" "zip"
         "5cee70f97fe3a093c3cb70c2a190c2df936b772e94a09ef7e3deb1ed177c9f32";
 
