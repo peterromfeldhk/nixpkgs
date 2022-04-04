@@ -399,9 +399,7 @@ let
         };
 
         propagatedBuildInputs = with self; [
-          azure-common msrest msrestazure cryptography
-          super.azure-nspkg
-          super.azure-keyvault-nspkg
+          azure-common azure-batch msrest msrestazure cryptography
         ];
         pythonNamespaces = [ ];
         pythonImportsCheck = [ ];
