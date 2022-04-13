@@ -17,7 +17,7 @@ let self = dotnetPackages // overrides; dotnetPackages = with self; {
   dotnet-ef = fetchNuGet {
     pname = "dotnet-ef";
     version = "6.0.4";
-    sha256 = lib.fakeSha256;
+    sha256 = "1lhnglkhgsdj73xpyqdnvbmyil3dj8q1h5kxmz6zipcn9idb0lrs";
     outputFiles = [ "tools/*" ];
   };
 
