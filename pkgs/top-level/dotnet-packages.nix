@@ -14,6 +14,13 @@ let self = dotnetPackages // overrides; dotnetPackages = with self; {
 
   # BINARY PACKAGES
 
+  dotnet-ef = fetchNuGet {
+    pname = "dotnet-ef";
+    version = "6.0.4";
+    sha256 = lib.fakeSha256;
+    outputFiles = [ "tools/*" ];
+  };
+
   NUnit3 = fetchNuGet {
     pname = "NUnit";
     version = "3.0.1";
