@@ -21,7 +21,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/Azure/${pname}/releases/download/${version}/Azure.Functions.Cli.linux-x64.${version}.zip";
-    sha256 = "sha256-NdTEFQaG8eFengjzQr51ezehIHFvQZqmrjpjWk4vZKo=";
+    sha256 = "08qxka7m64yrp1zcsphrlqm48gw6vwjq89f7zq8rcqcisd99vdpg";
   };
 
   buildInputs = [
@@ -64,6 +64,7 @@ stdenv.mkDerivation rec {
   '';
 
   doCheck = false;
+  checkPhase = ":";
 
   dontStrip = true; # Causes rpath patching to break if not set
 
