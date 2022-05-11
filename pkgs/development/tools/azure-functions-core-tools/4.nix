@@ -17,7 +17,7 @@
 
 stdenv.mkDerivation rec {
   pname = "azure-functions-core-tools";
-  version = " 4.0.4483";
+  version = "4.0.4483";
 
   src = fetchurl {
     url = "https://github.com/Azure/${pname}/releases/download/${version}/Azure.Functions.Cli.linux-x64.${version}.zip";
