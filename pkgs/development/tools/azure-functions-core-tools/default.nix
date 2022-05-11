@@ -20,7 +20,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/Azure/${pname}/releases/download/${version}/Azure.Functions.Cli.linux-x64.${version}.zip";
-    sha256 = "sha256-NdTEFQaG8eFengjzQr51ezehIHFvQZqmrjpjWk4vZKo=";
+    sha256 = "1j19vbcjs76cvaz7pb32v841qy1kcb1h0b59s5wh3a9fri6yvbs9";
   };
 
   buildInputs = [
