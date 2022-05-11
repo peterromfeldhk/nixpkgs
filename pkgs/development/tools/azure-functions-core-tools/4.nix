@@ -62,6 +62,9 @@ stdenv.mkDerivation rec {
     find $out/bin -type f -name "*.so" -exec patchelf --set-rpath "${libPath}" {} \;
     wrapProgram "$out/bin/func" --prefix LD_LIBRARY_PATH : ${libPath}
   '';
+
+  doCheck = false;
+
   dontStrip = true; # Causes rpath patching to break if not set
 
   meta = with lib; {
