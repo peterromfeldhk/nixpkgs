@@ -72,9 +72,9 @@ in stdenv.mkDerivation rec {
   '';
 
   doInstallCheck = true;
-  installCheckPhase = ''
-    $out/bin/dotnet --info
-  '';
+  # installCheckPhase = ''
+  #   $out/bin/dotnet --info
+  # '';
 
   setupHook = writeText "dotnet-setup-hook" ''
     if [ ! -w "$HOME" ]; then
