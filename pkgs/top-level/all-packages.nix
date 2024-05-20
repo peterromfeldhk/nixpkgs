@@ -36088,6 +36088,8 @@ with pkgs;
     inherit (darwin) autoSignDarwinBinariesHook;
   };
 
+  hashport-validator = callPackage ../applications/blockchains/hashport-validator {};
+
   ledger-agent = with python3Packages; toPythonApplication ledger-agent;
 
   ledger-live-desktop = callPackage ../applications/blockchains/ledger-live-desktop { };
